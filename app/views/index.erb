@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="flash"></div>
+  <a href="/"><img src="/image/logo.png" alt="Who's your daddy?" class="logo"></a>
+  <h1>Tweet Now!</h1>
+  <div id="form-container">
+    <p>Hello <%= @handler.handle %>! What would you like to tweet today?</p>
+  
+    <form id="tweet-form" method="POST" action="/post_tweet" class="center">
+      <textarea id="tweet-box" cols="30" rows="3" placeholder="Tweet tweet!" class="form-field"></textarea>
+      <br>
+      <input type="submit" class="button" id="tweet-submit">
+    </form>
+  </div>
+  
+  <div id="updating-container" data-handler="">
+    <p>Please wait while your tweet is being submitted.</p>
+    <img src="/image/bg-spinner.gif" alt="Updating tweets." class="spinner">
+  </div>
+</div>
