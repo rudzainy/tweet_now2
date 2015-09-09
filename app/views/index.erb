@@ -7,7 +7,7 @@
   <h1>Tweet Now!</h1>
   <div id="form-container">
     <% if logged_in? %>
-    <p>Hello <%= @user %>! What would you like to tweet today?</p>
+    <p>Hello <%= session[:name] %>! What would you like to tweet today?</p>
   
     <form id="tweet-form" method="POST" action="/post_tweet" class="center">
       <textarea id="tweet-box" cols="30" rows="3" placeholder="Tweet tweet!" class="form-field"></textarea>
