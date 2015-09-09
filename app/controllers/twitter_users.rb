@@ -11,8 +11,8 @@ get '/auth/twitter/callback' do
   session[:token] = env['omniauth.auth']['credentials']['token']
   session[:token_secret] = env['omniauth.auth']['credentials']['secret']
 
-  user = TwitterUser.find_or_create_by(handle: session[:handle])
-  user.update(name: session[:name], token: session[:token], token_secret: session[:token_secret]) 
+  # user = TwitterUser.find_or_create_by(handle: session[:handle])
+  # user.update(name: session[:name], token: session[:token], token_secret: session[:token_secret]) 
 
   erb :index
 end
