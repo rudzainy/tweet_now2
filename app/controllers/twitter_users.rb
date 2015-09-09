@@ -1,3 +1,5 @@
+
+
 get '/sign_in' do
 	redirect to("/auth/twitter")
 end
@@ -16,8 +18,9 @@ get '/auth/twitter/callback' do
 	  user.token = env['omniauth.auth']['credentials']['token']
 	  user.token_secret = env['omniauth.auth']['credentials']['secret']
   user.save
-  
-  session[:name] = user.name
+
+  # session[:name] = user.name
+  @user = user.name
 
   erb :index
 end
