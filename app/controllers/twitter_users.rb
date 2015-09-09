@@ -19,8 +19,7 @@ get '/auth/twitter/callback' do
 	  user.token_secret = env['omniauth.auth']['credentials']['secret']
   user.save
 
-  # session[:name] = user.name
-  @user = user.name
+  session[:name] = user.name
 
   erb :index
 end
