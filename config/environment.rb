@@ -20,6 +20,8 @@ require "sinatra/reloader" if development?
 
 require 'erb'
 
+require 'byebug'
+
 # Some helper constants for path-centric logic
 APP_ROOT = Pathname.new(File.expand_path('../../', __FILE__))
 
@@ -32,13 +34,16 @@ Dir[APP_ROOT.join('app', 'helpers', '*.rb')].each { |file| require file }
 # Set up the database and models
 require APP_ROOT.join('config', 'database')
 
-require 'byebug'
+# Twitter stuffs
+
 
 require 'time'
-
 require 'twitter'
-
 require 'yaml'
+
+require 'simple_oauth'
+require 'omniauth-twitter'
+require 'net/https'
 
 TWITTER_API = YAML.load_file('config/secret.yaml')
 
@@ -47,4 +52,8 @@ $twitter = Twitter::REST::Client.new do |config|
   config.consumer_secret = TWITTER_API['API_Secret']
   config.access_token = TWITTER_API['Access_Token']
   config.access_token_secret = TWITTER_API['Access_Token_Secret']
+end
+
+use OmniAuth::Builder do
+  provider :twitter, 'Wsah1lXh31qiWNji7wp9J6qBf', 'MX3Fqer8sJeB2mlZnMeqixxmbQJE1QRnkoVzLRnw8KH0DTodlQ'
 end

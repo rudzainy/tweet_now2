@@ -9,6 +9,7 @@ $(document).ready(function() {
   		url: '/post_tweet',
   		method: 'POST',
   		data: { tweet: tweet },
+  		error: $('.flash').replaceWith('<div class="flash">!! Something went wrong...</div>'),
   	}).done(function(response){
   		// debugger
   		var flash = JSON.parse(response);

@@ -19,6 +19,9 @@ gem 'shotgun'
 
 gem 'twitter'
 
+gem 'simple_oauth'
+gem 'omniauth-twitter'
+
 group :test do
   gem 'faker'
   gem 'rspec'

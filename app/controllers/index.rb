@@ -1,5 +1,4 @@
 get '/' do
-  @handler = TwitterUser.find_by_handle(@hollowaykeanho)
   erb :index
 end
 

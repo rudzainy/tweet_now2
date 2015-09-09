@@ -1,15 +1,22 @@
 <div class="container">
+  <% if logged_in? %>
+  <div class="logout"><a href="/sign_out"><button class="button-logout">Sign out</button></a></div>
+  <% end %>
   <div class="flash"></div>
   <a href="/"><img src="/image/logo.png" alt="Who's your daddy?" class="logo"></a>
   <h1>Tweet Now!</h1>
   <div id="form-container">
-    <p>Hello <%= @handler.handle %>! What would you like to tweet today?</p>
+    <% if logged_in? %>
+    <p>Hello <%= session[:name] %>! What would you like to tweet today?</p>
   
     <form id="tweet-form" method="POST" action="/post_tweet" class="center">
       <textarea id="tweet-box" cols="30" rows="3" placeholder="Tweet tweet!" class="form-field"></textarea>
       <br>
       <input type="submit" class="button" id="tweet-submit">
     </form>
+    <% else %>
+    <a href="/sign_in"><button class="button">Sign in</button></a>
+    <% end %>
   </div>
   
   <div id="updating-container" data-handler="">
@@ -17,3 +24,5 @@
     <img src="/image/bg-spinner.gif" alt="Updating tweets." class="spinner">
   </div>
 </div>
+
+

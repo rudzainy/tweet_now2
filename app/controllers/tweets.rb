@@ -1,9 +1,10 @@
 post '/post_tweet' do
 	# byebug
-	@handler = TwitterUser.find_by_handle(@hollowaykeanho)
 	tweet = params[:tweet]
 
-	# $twitter.update(tweet)
+	$twitter.access_token = session[:token]
+  $twitter.access_token_secret = session[:token_secret]
+	$twitter.update(tweet)
 
 	@flash = "Tweeted!"
 	@flash.to_json
