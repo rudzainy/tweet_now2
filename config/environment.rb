@@ -46,12 +46,12 @@ require 'net/https'
 # TWITTER_API = YAML.load_file('config/secret.yaml')
 
 $twitter = Twitter::REST::Client.new do |config|
-  config.consumer_key = ENV['API_Key']
-  config.consumer_secret = ENV['API_Secret']
-  config.access_token = ENV['Access_Token']
-  config.access_token_secret = ENV['Access_Token_Secret']
+  config.consumer_key = ENV['TWITTER_KEY']
+  config.consumer_secret = ENV['TWITTER_SECRET']
+  config.access_token = ENV['TWITTER_TOKEN']
+  config.access_token_secret = ENV['TWITTER_TOKEN_SECRET']
 end
 
 use OmniAuth::Builder do
-  provider :twitter, 'Wsah1lXh31qiWNji7wp9J6qBf', 'MX3Fqer8sJeB2mlZnMeqixxmbQJE1QRnkoVzLRnw8KH0DTodlQ'
+  provider :twitter, ENV['TWITTER_KEY'], ENV['TWITTER_SECRET']
 end
